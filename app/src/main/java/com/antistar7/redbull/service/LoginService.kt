@@ -3,12 +3,12 @@ package com.antistar7.redbull.service
 import com.antistar7.redbull.data.model.ResultInfo
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface LoginService {
-    @GET("/goldmine-api/login/{id}/{password}")
+    @GET("/goldmine-api/login?")
     fun login(
-        @Path("id") id: String,
-        @Path("password") password: String
+        @Query("id") id: String,
+        @Query("password") password: String
     ): Call<ResultInfo>
 }

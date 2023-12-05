@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
-
+                Log.i("REST", username.text.toString() + "," + password.text.toString())
                 loginApiService.login(username.text.toString(), password.text.toString())
                     .enqueue(object: Callback<ResultInfo> {
                         override fun onResponse(call: Call<ResultInfo>, response: Response<ResultInfo>) {
@@ -118,12 +118,12 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             response.body()?.let{
-                                Log.d("REST", it.toString())
+
                                 }
                             }
 
                         override fun onFailure(call: Call<ResultInfo>, t: Throwable) {
-                            Log.d("REST", t.toString())
+                            Log.e("REST", t.toString())
                         }
                     })
             }
